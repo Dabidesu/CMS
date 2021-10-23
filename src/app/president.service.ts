@@ -5,6 +5,7 @@ import { President } from "./president";
 import { environment } from 'src/environments/environment';
 
 
+
 @Injectable({providedIn: 'root'})
 export class PresidentService {
     private apiServerUrl = environment.apiBaseUrl;
@@ -23,7 +24,7 @@ export class PresidentService {
         return this.http.post<President>(`${this.apiServerUrl}/president/update`, president);
     }
 
-    public deletePresident(id: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/president/delete/${id}`);
+    public deletePresident(presidentId: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/president/delete/${presidentId}`);
     }
 }

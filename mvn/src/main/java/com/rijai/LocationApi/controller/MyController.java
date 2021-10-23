@@ -4,17 +4,21 @@ import com.rijai.LocationApi.model.President;
 import com.rijai.LocationApi.model.Senator;
 import com.rijai.LocationApi.service.PresidentService;
 import com.rijai.LocationApi.service.SenatorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RestController
 public class MyController {
+    @Autowired
     private final PresidentService presidentService;
+
+    @Autowired
     private final SenatorService senatorService;
 
     public MyController(PresidentService presidentService, SenatorService senatorService) {
@@ -29,6 +33,9 @@ public class MyController {
         List<President> president = presidentService.findAllPresident();
         return new ResponseEntity<>(president, HttpStatus.OK);
     }
+
+    @RequestMapping("/president/show/{id}")
+    public President showPresident(@PathVariable long id) { return presidentService.getPresident(id);}
 
     @PostMapping("/president/add")
     public ResponseEntity<President> addPresident (@RequestBody President president) {

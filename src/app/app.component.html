@@ -130,10 +130,48 @@
 
     <!-- Edit Modal-->
     <div class="modal fade" id="updatePresidentModal" tabindex="-1" role="dialog" aria-labelledby="presidentEditModalLabel" aria-hidden="true">
-        <!-- Update -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="updatePresidentModalLabel">Update Record {{editPresident?.name}}</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <form #editForm="ngForm">
+                     <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" ngModel="{{editPresident?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                     </div>
+                     <input type="hidden" ngModel="{{editPresident?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                     <div class="form-group">
+                        <label for="email">Party List</label>
+                        <input type="email" ngModel="{{editPresident?.partyList}}" name="email" class="form-control" id="email" placeholder="Email">
+                     </div>
+                     <div class="form-group">
+                        <label for="phone">Laws Passed</label>
+                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job title">
+                     </div>
+                     <div class="form-group">
+                        <label for="phone">Recognitions</label>
+                        <input type="text" ngModel="{{editPresident?.knownFor}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                     </div>
+                     <div class="form-group">
+                        <label for="phone">Image URL</label>
+                        <input type="text" ngModel="{{editPresident?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                        <button (click)="onUpdatePresident(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                     </div>
+                  </form>
+               </div>
+            </div>
+         </div>
         </div>
 
-    
+
   
     
     <!-- Delete Modal -->

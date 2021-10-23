@@ -62,8 +62,10 @@ export class AppComponent implements OnInit {
     );
   }
 
-  public onDeletePresident(id: number): void {
-    this.presidentService.deletePresident(id).subscribe(
+  
+  
+  public onDeletePresident(presidentId: number): void {
+    this.presidentService.deletePresident(presidentId).subscribe(
       (response: void) => {
         console.log(response);
         this.getPresidents();
