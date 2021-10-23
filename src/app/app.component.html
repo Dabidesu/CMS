@@ -11,21 +11,7 @@
       background-color: #DEDEDE;
     }
   </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" style="color:white;">Presidential Candidates</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor02">
-       <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" >Add Employee <span class="sr-only">(current)</span></a>
-            <!-- (click)="onOpenModal(null, 'add')"-->
-          </li>
-       </ul>
-       
-    </div>
-  </nav>
+
 
 <body>
 <!-- Presidential Candidate Cards-->
@@ -70,8 +56,7 @@
                 <!--a class="nav-link" (click)="onOpenModal(null, 'add')">Add Employee</a> -->
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="background-color: #999999; border: none !important;"><div style="text-align: center;"><a class="nav-link" (click)="onOpenModal(null!, 'add')">Add Employee</a></div> </li>
-                <!--<a href=""> <img src="https://i.ibb.co/nQKJvyK/output-onlinepngtools-2.png" width="50" height="50"/> </a> -->
+                <li class="list-group-item" style="background-color: #999999; border: none !important;"><div style="text-align: center;"><a class="nav-link" (click)="onOpenModal(null!, 'add')"><img src="https://i.ibb.co/nQKJvyK/output-onlinepngtools-2.png" width="50" height="50"/></a></div> </li>
             
             </ul>
             
@@ -125,7 +110,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Save changes</button>
+                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
                 </div>
                 </form>
             </div>
@@ -139,7 +124,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                <div class="modal-header">
-                  <h5 class="modal-title" id="updatePresidentModalLabel">Update Record {{editPresident?.name}}</h5>
+                  <h5 class="modal-title" id="updatePresidentModalLabel">Update Record</h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                   </button>
@@ -152,17 +137,21 @@
                      </div>
                      <input type="hidden" ngModel="{{editPresident?.id}}" name="id" class="form-control" id="id" placeholder="Email">
                      <div class="form-group">
-                        <label for="email">Party List</label>
-                        <input type="email" ngModel="{{editPresident?.partyList}}" name="email" class="form-control" id="email" placeholder="Email">
+                        <label for="partyList">Party List</label>
+                        <input type="text" ngModel="{{editPresident?.partyList}}" name="email" class="form-control" id="email" placeholder="Party List">
                      </div>
                      <div class="form-group">
-                        <label for="phone">Laws Passed</label>
-                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Job title">
+                        <label for="lawsPassed">Laws Passed</label>
+                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Laws Passed">
                      </div>
                      <div class="form-group">
-                        <label for="phone">Recognitions</label>
-                        <input type="text" ngModel="{{editPresident?.knownFor}}" name="phone" class="form-control" id="phone" name="phone" placeholder="Phone">
+                        <label for="knownFor">Recognitions</label>
+                        <input type="text" ngModel="{{editPresident?.knownFor}}" name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions">
                      </div>
+                     <div class="form-group">
+                        <label for="education">Educational Background</label>
+                        <input type="text" ngModel name="{{editPresident?.education}}" class="form-control" id="education" placeholder="Educational Background">
+                    </div>
                      <div class="form-group">
                         <label for="phone">Image URL</label>
                         <input type="text" ngModel="{{editPresident?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
