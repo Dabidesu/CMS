@@ -12,6 +12,8 @@ import { PresidentService } from './president.service';
 })
 export class AppComponent implements OnInit {
   public presidents!: President[];
+  public editPresident!: President;
+  public deletePresident!: President;
   title: any;
 
 
@@ -48,6 +50,29 @@ export class AppComponent implements OnInit {
     );
   }
 
+  public onUpdatePresident(president: President): void {
+    this.presidentService.updatePresident(president).subscribe(
+      (response: President) => {
+        console.log(response);
+        this.getPresidents();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeletePresident(id: number): void {
+    this.presidentService.deletePresident(id).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getPresidents();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
 
   public onOpenModal(president: President, mode: string): void {
     const container = document.getElementById('main-container');

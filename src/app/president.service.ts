@@ -23,7 +23,7 @@ export class PresidentService {
         return this.http.post<President>(`${this.apiServerUrl}/president/update`, president);
     }
 
-    public deletePresident(presidentId: number): Observable<void> {
-        return this.http.delete<void>(`${this.apiServerUrl}/president/delete/${presidentId}`);
+    public deletePresident(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiServerUrl}/president/delete/${id}`);
     }
 }
