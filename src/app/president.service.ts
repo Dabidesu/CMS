@@ -1,4 +1,4 @@
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { President } from "./president";
@@ -6,14 +6,13 @@ import { environment } from 'src/environments/environment';
 
 
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class PresidentService {
     private apiServerUrl = environment.apiBaseUrl;
-
     constructor(private http: HttpClient) {}
 
     public getPresidents(): Observable<President[]> {
-        return this.http.get<any>(`${this.apiServerUrl}/president/all`);
+        return this.http.get<President[]>(`${this.apiServerUrl}/president/all`);
     }
 
     public addPresident(president: President): Observable<President> {

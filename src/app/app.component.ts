@@ -11,7 +11,7 @@ import { PresidentService } from './president.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public presidents!: President[];
+  public presidents: President[];
   public editPresident!: President;
   public deletePresident!: President;
   title: any;
@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     this.getPresidents();
   }
 
+  
   public getPresidents(): void{
     this.presidentService.getPresidents().subscribe(
       (response:President[]) => {
