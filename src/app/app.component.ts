@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { President } from './president';
 import { PresidentService } from './president.service';
 
@@ -34,14 +35,30 @@ export class AppComponent implements OnInit {
     );
   }
 
+  public onAddPresident(addForm: NgForm): void {
+    document.getElementById('add-president-form')?.click();
+    this.presidentService.addPresident(addForm.value).subscribe(
+      (response: President) => {
+        console.log(response);
+        this.getPresidents();
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
 
   public onOpenModal(president: President, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
-    
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-toggle', 'modal');
+    if (mode == 'add')
+    {
+      button.setAttribute('data-target', '#addPresidentModal');
+    }
     if (mode == 'edit')
     {
       button.setAttribute('data-target', '#updatePresidentModal');
@@ -53,6 +70,7 @@ export class AppComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
+  
    
 
 
