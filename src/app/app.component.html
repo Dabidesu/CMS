@@ -1,0 +1,60 @@
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Internal CSS-->
+  <style>
+    * {box-sizing: border-box;}
+    
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #DEDEDE;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Presidential Candidate Cards-->
+<br><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div *ngFor="let president of presidents" class="col-md-6 col-xl-3">
+            <div class="card m-b-30">
+                <div class="card-body row">
+                    <div class="col-6">
+                        <a href=""><img src="{{president?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                    </div>
+                    <div class="col-6 card-title align-self-center mb-0">
+                        <h5>{{president?.name}}</h5>
+                        <p class="m-0">{{president?.partyList}}</p>
+                    </div>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class=""></i><b>Laws Passed:</b> {{president?.lawsPassed}}</li>
+                    <li class="list-group-item"><i class=""></i><b>Educational Background:</b> &nbsp; <br>{{president?.education}}<br></li>
+                    <li class="list-group-item"><i class=""></i><b>Achievements / Recognitions</b> &nbsp; <br>{{president?.knownFor}}</li>
+                </ul>
+                
+                <div class="card-body">
+                    <div class="float-right btn-group btn-group-sm">
+                        <a href="#" class="btn btn-primary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                        <a href="#" class="btn btn-secondary tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                    </div>
+                    <ul class="social-links list-inline mb-0">
+                        <!-- Extra bullshit (buttons, etc.) -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<!-- Modal(s)-->
+
+  <!-- Update Employee Modal-->
+  <div class="modal fade" id="updatePresidentModal" tabindex="-1" role="dialog" aria-labelledby="updatePresidentModalLabel" aria-hidden="true">
+    <!-- Update -->
+    </div>
+
+</body>
+
