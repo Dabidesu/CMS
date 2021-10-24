@@ -4,6 +4,7 @@ import com.rijai.LocationApi.model.President;
 import com.rijai.LocationApi.model.Senator;
 import com.rijai.LocationApi.service.PresidentService;
 import com.rijai.LocationApi.service.SenatorService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,10 +56,11 @@ public class MyController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /*@GetMapping("/find/{id}")
+    @GetMapping("/president/{id}")
     public ResponseEntity<President> getPresidentById (@PathVariable("id") Long id) {
-        President president = presidentService.findPresidentById(id);
-    }*/
+        President president = presidentService.getPresident(id);
+        return ResponseEntity.ok(president);
+    }
 
     /*------------------------------------SENATOR----------------------------*/
 

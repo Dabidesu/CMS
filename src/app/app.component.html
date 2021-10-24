@@ -1,17 +1,27 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- Internal CSS-->
+<style>
+* {box-sizing: border-box;}
 
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DEDEDE;
+}
+</style>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Internal CSS-->
-  <style>
-    * {box-sizing: border-box;}
-    
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: #DEDEDE;
-    }
-  </style>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" style="color:white;">Presidential Candidate List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02" style = "position: absolute; float: right; right: 150px;">
+       <form class="form-inline my-2 my-lg-0">
+          <input type="search" (ngModelChange)="searchPresidents(key.value)" #key="ngModel" ngModel
+           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search candidates..." required>
+       </form>
+    </div>
+  </nav>
 
 <body>
 <!-- Presidential Candidate Cards-->
@@ -40,6 +50,8 @@
                         <a (click)="onOpenModal(president, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                         <a (click)="onOpenModal(president, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                     </div>
+                    <br><br>
+                    
                     <ul class="social-links list-inline mb-0">
                         <!-- Extra bullshit (buttons, etc.) -->
                     </ul>
@@ -138,11 +150,11 @@
                      <input type="hidden" ngModel="{{editPresident?.id}}" name="id" class="form-control" id="id" placeholder="Email">
                      <div class="form-group">
                         <label for="partyList">Party List</label>
-                        <input type="text" ngModel="{{editPresident?.partyList}}" name="email" class="form-control" id="email" placeholder="Party List">
+                        <input type="text" ngModel="{{editPresident?.partyList}}" name="partyList" class="form-control" id="partyList" placeholder="Party List">
                      </div>
                      <div class="form-group">
                         <label for="lawsPassed">Laws Passed</label>
-                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="jobTitle" class="form-control" id="jobTitle" placeholder="Laws Passed">
+                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed">
                      </div>
                      <div class="form-group">
                         <label for="knownFor">Recognitions</label>
@@ -150,7 +162,7 @@
                      </div>
                      <div class="form-group">
                         <label for="education">Educational Background</label>
-                        <input type="text" ngModel name="{{editPresident?.education}}" class="form-control" id="education" placeholder="Educational Background">
+                        <input type="text" ngModel="{{editPresident?.education}}" name="education" class="form-control" id="education" placeholder="Educational Background">
                     </div>
                      <div class="form-group">
                         <label for="phone">Image URL</label>

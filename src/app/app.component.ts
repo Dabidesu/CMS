@@ -12,8 +12,8 @@ import { PresidentService } from './president.service';
 })
 export class AppComponent implements OnInit {
   public presidents: President[];
-  public editPresident!: President;
-  public deletePresident!: President;
+  public editPresident: President;
+  public deletePresident: President;
   title: any;
 
 
@@ -24,6 +24,8 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.getPresidents();
   }
+
+  
 
   
   public getPresidents(): void{
@@ -63,6 +65,8 @@ export class AppComponent implements OnInit {
     );
   }
 
+ 
+
   
   
   public onDeletePresident(presidentId: number): void {
@@ -89,10 +93,12 @@ export class AppComponent implements OnInit {
     }
     if (mode == 'edit')
     {
+      this.editPresident = president;
       button.setAttribute('data-target', '#updatePresidentModal');
     }
     if (mode == 'delete')
     {
+      this.deletePresident = president;
       button.setAttribute('data-target', '#deletePresidentModal');
     }
     container?.appendChild(button);
@@ -100,7 +106,23 @@ export class AppComponent implements OnInit {
   }
   
    
-
+  public searchPresidents(key: string): void {
+    console.log(key);
+    const results: President[] = [];
+    for (const president of this.presidents) {
+      if (president.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || president.partyList.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || president.lawsPassed.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || president.knownFor.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || president.education.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(president);
+      }
+    }
+    this.presidents = results;
+    if (results.length === 0 || !key) {
+      this.getPresidents();
+    }
+  }
 
 
 

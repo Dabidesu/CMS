@@ -20,7 +20,7 @@ export class PresidentService {
     }
 
     public updatePresident(president: President): Observable<President> {
-        return this.http.post<President>(`${this.apiServerUrl}/president/update`, president);
+        return this.http.put<President>(`${this.apiServerUrl}/president/update`, president);
     }
 
     public deletePresident(presidentId: number): Observable<void> {
