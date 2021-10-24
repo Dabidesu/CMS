@@ -16,7 +16,8 @@
   cursor: pointer;
 }
 
-.button:hover {opacity: 1}
+.button:hover {opacity: 1; border-radius: 100px; border: 2px solid rgb(204, 184, 0)}
+
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
@@ -54,13 +55,13 @@ tr:nth-child(even) {
 <body>
 <!-- Presidential Candidate Cards-->
 <br><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container" id="main-container">
+<div class="container" id="main-container" >
     <div class="row">
-        <div *ngFor="let president of presidents" class="col-md-6 col-xl-3">
-            <div class="card m-b-30">
+        <div *ngFor="let president of presidents" class="col-md-6 col-xl-3" >
+            <div class="card m-b-30"  style="box-shadow: 5px 5px 5px grey;">
                 <div class="card-body row">
                     <div class="col-6">
-                        <a href=""><img src="{{president?.imageUrl}}" alt="" class="img-fluid rounded-circle w-60"></a>
+                        <a href=""><img style="border-radius: 20%"src="{{president?.imageUrl}}" alt="" class="img-fluid "></a>
                     </div>
                     <div class="col-6 card-title align-self-center mb-0">
                         <h5 style="font-size: large;">{{president?.name}}</h5>
