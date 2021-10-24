@@ -61,7 +61,7 @@ tr:nth-child(even) {
             <div class="card m-b-30"  style="box-shadow: 5px 5px 5px grey;">
                 <div class="card-body row">
                     <div class="col-6">
-                        <a href=""><img style="border-radius: 20%"src="{{president?.imageUrl}}" alt="" class="img-fluid "></a>
+                        <a href=""><img style="border-radius: 20%; height: auto; width: 75px; object-fit: cover;" src="{{president?.imageUrl}}" alt="" ></a>
                     </div>
                     <div class="col-6 card-title align-self-center mb-0">
                         <h5 style="font-size: large;">{{president?.name}}</h5>
@@ -229,7 +229,7 @@ tr:nth-child(even) {
                     <div  class="modal-dialog" role="document">
                     <div class="modal-content ">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addSenatorModalLabel">Senatorial Slate <!--for {{president.name}} --> </h5>
+                            <h5 id="addSenatorModalLabel" style="text-align: center;">List of Senatorial Candidates <!--for {{president.name}} --> </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -237,6 +237,7 @@ tr:nth-child(even) {
                         <div class="modal-body">
                             <table>
                                 <tr> <b>
+                                    <th>img</th> <!-- Tanggalin -->
                                     <th>Name</th>
                                     <th>Party List</th>
                                     <th>Laws Passed</th>
@@ -245,6 +246,7 @@ tr:nth-child(even) {
                                 </b> </tr>
                             <ul *ngFor="let senator of senators" class="col-md-6 col-xl-3">
                                     <tr>
+                                        <td><img style="border-radius: 20%; height: auto; width: 150px; object-fit: cover;" src="{{senator.imageUrl}}" /></td>
                                         <td>{{senator.name}}</td>
                                         <td>{{senator.partyList}}</td>
                                         <td>{{senator.lawsPassed}}</td>
