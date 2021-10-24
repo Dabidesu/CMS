@@ -45,6 +45,7 @@ tr:nth-child(even) {
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02" style = "position: absolute; float: right; right: 150px;">
+        <!-- Search Module -->
        <form class="form-inline my-2 my-lg-0">
           <input type="search" (ngModelChange)="searchPresidents(key.value)" #key="ngModel" ngModel
            name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search candidates..." required>

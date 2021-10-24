@@ -35,9 +35,6 @@ public class MyController {
         return new ResponseEntity<>(president, HttpStatus.OK);
     }
 
-    @RequestMapping("/president/show/{id}")
-    public President showPresident(@PathVariable long id) { return presidentService.getPresident(id);}
-
     @PostMapping("/president/add")
     public ResponseEntity<President> addPresident (@RequestBody President president) {
         President newPresident = presidentService.addPresident(president);
