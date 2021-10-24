@@ -2,7 +2,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { President } from './president';
+import { Senator } from './senator';
 import { PresidentService } from './president.service';
+import { SenatorService } from './senator.service';
+
 
 
 @Component({
@@ -14,15 +17,24 @@ export class AppComponent implements OnInit {
   public presidents: President[];
   public editPresident: President;
   public deletePresident: President;
+
+  public senators: Senator[];
+  /*public editSenator: Senator;*/
+  public deleteSenator: Senator;
+
   title: any;
 
+  
 
-  constructor(private presidentService: PresidentService){
+  constructor(private presidentService: PresidentService, private senatorService: SenatorService){
     this.presidents = [];
+    this.senators = [];
   }
+
 
   ngOnInit() {
     this.getPresidents();
+    this.getSenators();
   }
 
   
@@ -33,6 +45,18 @@ export class AppComponent implements OnInit {
       (response:President[]) => {
         this.presidents = response;
         console.log(this.presidents);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getSenators(): void{
+    this.senatorService.getSenators().subscribe(
+      (response:Senator[]) => {
+        this.senators = response;
+        console.log(this.senators);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -64,10 +88,6 @@ export class AppComponent implements OnInit {
       }
     );
   }
-
- 
-
-  
   
   public onDeletePresident(presidentId: number): void {
     this.presidentService.deletePresident(presidentId).subscribe(
@@ -103,6 +123,25 @@ export class AppComponent implements OnInit {
     }
     container?.appendChild(button);
     button.click();
+  }
+
+  public onOpenModalXD(senator: Senator, mode: string): void {
+    const containerxd = document.getElementById('main-container');
+    const buttonxd = document.createElement('button');
+    buttonxd.type = 'button';
+    buttonxd.style.display = 'none';
+    buttonxd.setAttribute('data-toggle', 'modal');
+    if (mode == 'view')
+    {
+      buttonxd.setAttribute('data-target', '#viewSenatorModal');
+    }
+    if (mode == 'delete')
+    {
+      this.deleteSenator = senator;
+      buttonxd.setAttribute('data-target', '#deletePresidentModal');
+    }
+    containerxd?.appendChild(buttonxd);
+    buttonxd.click();
   }
   
    

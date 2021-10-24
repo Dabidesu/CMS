@@ -2,11 +2,39 @@
 <!-- Internal CSS-->
 <style>
 * {box-sizing: border-box;}
+.button {
+  background-color: #FCF951;
+  border: none;
+  color: #550a8a;
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+.button:hover {opacity: 1}
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #DEDEDE;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #D6EEEE;
 }
 </style>
 
@@ -50,10 +78,9 @@ body {
                         <a (click)="onOpenModal(president, 'edit')" class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
                         <a (click)="onOpenModal(president, 'delete')" class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
                     </div>
-                    <br><br>
                     
                     <ul class="social-links list-inline mb-0">
-                        <!-- Extra bullshit (buttons, etc.) -->
+                        <button class="button" (click)="onOpenModalXD(null!, 'view')" ><b>Senatorial Slate</b></button>
                     </ul>
                 </div>
             </div>
@@ -65,7 +92,6 @@ body {
                 <div class="col-6">
                     <a href="" ><img src="asd" alt="" class="img-fluid rounded-circle w-60"></a>
                 </div>
-                <!--a class="nav-link" (click)="onOpenModal(null, 'add')">Add Employee</a> -->
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item" style="background-color: #999999; border: none !important;"><div style="text-align: center;"><a class="nav-link" (click)="onOpenModal(null!, 'add')"><img src="https://i.ibb.co/nQKJvyK/output-onlinepngtools-2.png" width="50" height="50"/></a></div> </li>
@@ -81,126 +107,154 @@ body {
 </div>
 <br>
 
-<!-- Modal(s)-->
+<!------------------------------------------------------------- Modal(s)---------------------------------------------------------------------------------------------------->
 
-    <!-- Add Modal -->
-    <div class="modal fade" id="addPresidentModal" tabindex="-1" role="dialog" aria-labelledby="addPresidentModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addPresidentModalLabel">Add President</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- ngSubmit -->
-                <form #addForm="ngForm" (ngSubmit)="onAddPresident(addForm)">
-                <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
-                </div>
-                <div class="form-group">
-                <label for="partyList">Party List</label>
-                <input type="email" ngModel name="partyList" class="form-control" id="partyList" placeholder="Party List" required>
-                </div>
-                <div class="form-group">
-                <label for="lawsPassed">Laws Passed</label>
-                <input type="text" ngModel name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed" required>
-                </div>
-                <div class="form-group">
-                <label for="knownFor">Recognitions</label>
-                <input type="text" ngModel name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions" required>
-                </div>
-                <div class="form-group">
-                    <label for="education">Educational Background</label>
-                    <input type="text" ngModel name="education" class="form-control" id="education" placeholder="Educational Background" required>
-                </div>
-                <div class="form-group">
-                <label for="imageUrl">Image URL</label>
-                <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
-                </div>
-                <div class="modal-footer">
-                <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        </div>
-        </div>
-
-
-    <!-- Edit Modal-->
-    <div class="modal fade" id="updatePresidentModal" tabindex="-1" role="dialog" aria-labelledby="presidentEditModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="updatePresidentModalLabel">Update Record</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <form #editForm="ngForm">
-                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" ngModel="{{editPresident?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
-                     </div>
-                     <input type="hidden" ngModel="{{editPresident?.id}}" name="id" class="form-control" id="id" placeholder="Email">
-                     <div class="form-group">
-                        <label for="partyList">Party List</label>
-                        <input type="text" ngModel="{{editPresident?.partyList}}" name="partyList" class="form-control" id="partyList" placeholder="Party List">
-                     </div>
-                     <div class="form-group">
-                        <label for="lawsPassed">Laws Passed</label>
-                        <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed">
-                     </div>
-                     <div class="form-group">
-                        <label for="knownFor">Recognitions</label>
-                        <input type="text" ngModel="{{editPresident?.knownFor}}" name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions">
-                     </div>
-                     <div class="form-group">
-                        <label for="education">Educational Background</label>
-                        <input type="text" ngModel="{{editPresident?.education}}" name="education" class="form-control" id="education" placeholder="Educational Background">
+                <!-- Add -->
+                <div class="modal fade" id="addPresidentModal" tabindex="-1" role="dialog" aria-labelledby="addPresidentModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addPresidentModalLabel">Add President</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #addForm="ngForm" (ngSubmit)="onAddPresident(addForm)">
+                            <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="partyList">Party List</label>
+                            <input type="email" ngModel name="partyList" class="form-control" id="partyList" placeholder="Party List" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="lawsPassed">Laws Passed</label>
+                            <input type="text" ngModel name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="knownFor">Recognitions</label>
+                            <input type="text" ngModel name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="education">Educational Background</label>
+                                <input type="text" ngModel name="education" class="form-control" id="education" placeholder="Educational Background" required>
+                            </div>
+                            <div class="form-group">
+                            <label for="imageUrl">Image URL</label>
+                            <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
+                            </div>
+                            </form>
+                        </div>
                     </div>
-                     <div class="form-group">
-                        <label for="phone">Image URL</label>
-                        <input type="text" ngModel="{{editPresident?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
-                     </div>
-                     <div class="modal-footer">
-                        <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
-                        <button (click)="onUpdatePresident(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
-                     </div>
-                  </form>
-               </div>
-            </div>
-         </div>
-        </div>
-
-
-  
-    
-    <!-- Delete Modal -->
-    <div class="modal fade" id="deletePresidentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModelLabel">Delete Candidate</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to remove candidate {{deletePresident?.name}}?</p>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button (click)="onDeletePresident(deletePresident?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <!-- Edit -->
+                <div class="modal fade" id="updatePresidentModal" tabindex="-1" role="dialog" aria-labelledby="presidentEditModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updatePresidentModalLabel">Update Record</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #editForm="ngForm">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" ngModel="{{editPresident?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                                </div>
+                                <input type="hidden" ngModel="{{editPresident?.id}}" name="id" class="form-control" id="id" placeholder="Email">
+                                <div class="form-group">
+                                    <label for="partyList">Party List</label>
+                                    <input type="text" ngModel="{{editPresident?.partyList}}" name="partyList" class="form-control" id="partyList" placeholder="Party List">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lawsPassed">Laws Passed</label>
+                                    <input type="text" ngModel="{{editPresident?.lawsPassed}}" name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed">
+                                </div>
+                                <div class="form-group">
+                                    <label for="knownFor">Recognitions</label>
+                                    <input type="text" ngModel="{{editPresident?.knownFor}}" name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions">
+                                </div>
+                                <div class="form-group">
+                                    <label for="education">Educational Background</label>
+                                    <input type="text" ngModel="{{editPresident?.education}}" name="education" class="form-control" id="education" placeholder="Educational Background">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Image URL</label>
+                                    <input type="text" ngModel="{{editPresident?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                    <button (click)="onUpdatePresident(editForm.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete  -->
+                <div class="modal fade" id="deletePresidentModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModelLabel">Delete Candidate</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to remove candidate <b>{{deletePresident?.name}}</b>?</p>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    <button (click)="onDeletePresident(deletePresident?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         
+                <!-- View Senatorial Candidates -->
+                <div class="modal fade" id="viewSenatorModal" tabindex="-1" role="dialog" aria-labelledby="viewSenatorModalLabel" aria-hidden="true">
+                    <div  class="modal-dialog" role="document">
+                    <div class="modal-content ">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addSenatorModalLabel">Senatorial Slate <!--for {{president.name}} --> </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <table>
+                                <tr> <b>
+                                    <th>Name</th>
+                                    <th>Party List</th>
+                                    <th>Laws Passed</th>
+                                    <th>Recognitions</th>
+                                    <th>Educational Background</th>
+                                </b> </tr>
+                            <ul *ngFor="let senator of senators" class="col-md-6 col-xl-3">
+                                    <tr>
+                                        <td>{{senator.name}}</td>
+                                        <td>{{senator.partyList}}</td>
+                                        <td>{{senator.lawsPassed}}</td>
+                                        <td>{{senator.knownFor}}</td>
+                                        <td>{{senator.background}}</td>
+                                    </tr>      
+                            </ul>
+                        </table> 
+                        </div>
+                    </div>
+                    </div>
+                </div>
 </body>
 
