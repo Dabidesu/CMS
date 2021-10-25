@@ -33,10 +33,6 @@
 .button:hover {opacity: 1; border-radius: 100px; border: 2px solid rgb(204, 184, 0)}
 .buttonxd:hover {opacity: 1; border-radius: 50px; border: 2px solid rgb(204, 184, 0)}
 
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
 
 
 
@@ -320,31 +316,48 @@ footer {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <table >
-                                <tr > 
+                            <table class="table table-striped">
+                                <thead>
+                                  <tr>
                                     <th class="col-sm-4"><img src="https://i.ibb.co/C7GmRZW/zxc.png"/></th> <!-- Tanggalin -->
                                     <th class="col-sm-4"><b>Name</b> </th>
                                     <th class="col-sm-4"><b>Party List</b></th>
                                     <th class="col-sm-4"><b>Laws Passed</b></th>
                                     <th class="col-sm-4"><b>Recognitions</b></th>
                                     <th class="col-sm-4"><b>Educational Background</b></th>
-                                </tr>
-                                <tr >
-                                    <ul *ngFor="let senator of senators" >
-                                        <td class="col-sm-4"><img style="border-radius: 10%; height: auto; width: 100px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
-                                        <td class="col-sm-4">{{senator.name}}</td>
-                                        <td class="col-sm-4">{{senator.partyList}}</td>
-                                        <td class="col-sm-4">{{senator.lawsPassed}}</td>
-                                        <td class="col-sm-4">{{senator.knownFor}}</td>
-                                        <td class="col-sm-4">{{senator.background}}</td>
-                                        <td class="col-sm-4"><a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a></td>
-                                        <td class="col-sm-4"><a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a></td>
-                                    </ul>
-                                </tr>      
-                                
-                        </table>
-                        
-
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let senator of senators">
+                                    <ng-container >
+                                    <td class="p-1">
+                                        <img style="border-radius: 10%; height: auto; width: 100px; object-fit: cover; " src="{{senator.imageUrl}}" />
+                                    </td>
+                                    <td class="p-1">
+                                        {{senator.name}}
+                                       </td>
+                                    <td class="p-1">
+                                        {{senator.partyList}}
+                                    </td>
+                                    <td class="p-1">
+                                        {{senator.lawsPassed}}
+                                    </td>
+                                    <td class="p-1">
+                                        {{senator.knownFor}}
+                                    </td>
+                                    <td class="p-1">
+                                        {{senator.background}}
+                                    </td>
+                                    <td class="p-1">
+                                        <a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                                    </td>
+                                    <td class="p-1">
+                                        <a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                    </td>
+                                    </ng-container>
+                                  </tr>
+                                </tbody>
+                                </table>
                         </div>
                     </div>
                     </div>
@@ -467,7 +480,7 @@ footer {
                         </div>
                     </div>
                 </div>
-
+<br> <br> <br>
 <!-- Footer -->
 <footer class="w-100 py-4 flex-shrink-0">
     <div class="container py-4">
