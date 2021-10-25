@@ -67,9 +67,9 @@ export class AppComponent implements OnInit {
 
 
   //------------------------ President ------------------------//
-  public onAddPresident(addForm: NgForm): void {
+  public onAddPresident(addFormasd: NgForm): void {
     document.getElementById('add-president-form')?.click();
-    this.presidentService.addPresident(addForm.value).subscribe(
+    this.presidentService.addPresident(addFormasd.value).subscribe(
       (response: President) => {
         console.log(response);
         this.getPresidents();
@@ -149,9 +149,9 @@ export class AppComponent implements OnInit {
 
 
   //------------------------ Senator ------------------------//
-  public onAddSenator(addForm: NgForm): void {
+  public onAddSenator(addFormzxc: NgForm): void {
     document.getElementById('add-senator-form')?.click();
-    this.senatorService.addSenator(addForm.value).subscribe(
+    this.senatorService.addSenator(addFormzxc.value).subscribe(
       (response: Senator) => {
         console.log(response);
         this.getSenators();
@@ -203,7 +203,7 @@ export class AppComponent implements OnInit {
       this.getSenators();
     }
   }
-  
+
   public onOpenModalXD(senator: Senator, mode: string): void {
     const containerxd = document.getElementById('main-container');
     const buttonxd = document.createElement('button');

@@ -115,8 +115,8 @@ footer {
 </style>
 
 <nav style="height:70px;" class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div><img src="https://i.ibb.co/kMQn6Jt/COMELEC.png" width="30" height="30"></div>
-    <a class="navbar-brand" style="color:white;">&nbsp;&nbsp;&nbsp;Presidential Candidate List</a>
+    <div> &nbsp; <img src="https://i.ibb.co/kMQn6Jt/COMELEC.png" width="40" height="auto"></div>
+    <a class="navbar-brand" style="color:white;">&nbsp;&nbsp;&nbsp;&nbsp;<img style="height:70px; width: auto;"src="https://cdn.discordapp.com/attachments/784223286799368222/902128690928955402/zxcqwe.png"/></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -209,7 +209,7 @@ footer {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form #addFormx="ngForm" (ngSubmit)="onAddPresident(addFormx)">
+                            <form #addFormasd="ngForm" (ngSubmit)="onAddPresident(addFormasd)">
                             <div class="form-group">
                                 <label for="name">Name</label>
                                 <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
@@ -236,7 +236,7 @@ footer {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button [disabled]="addFormx.invalid" type="submit" class="btn btn-primary" >Submit</button>
+                                <button [disabled]="addFormasd.invalid" type="submit" class="btn btn-primary" >Submit</button>
                             </div>
                             </form>
                         </div>
@@ -367,10 +367,10 @@ footer {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form #addForm="ngForm" (ngSubmit)="onAddSenator(addForm)">
+                            <form #addFormzxc="ngForm" (ngSubmit)="onAddSenator(addFormzxc)">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" ngModel name="name"  id="name" placeholder="Name" required>
+                                <input type="text" ngModel name="name"  class="form-control" id="name" placeholder="Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="partyList">Party List</label>
@@ -398,7 +398,7 @@ footer {
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="add-senator-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
+                                <button [disabled]="addFormzxc.invalid" type="submit" class="btn btn-primary" >Submit</button>
                             </div>
                             </form>
                         </div>
