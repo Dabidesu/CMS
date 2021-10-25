@@ -38,13 +38,18 @@ table {
   width: 100%;
 }
 
+
+
+
+
 th, td {
   text-align: left;
-  padding: 8px;
+  padding: 50px;
+  border: 1px solid #dddddd;
 }
 
 tr:nth-child(even) {
-  background-color: #D6EEEE;
+  background-color: #dddddd;
 }
 
 .marq {
@@ -312,7 +317,6 @@ footer {
                     </div>
                 </div>
                 
-                <!-- Copy below -->
                 <!-- View Senatorial Candidates -->
                 <div class="modal fade" id="viewSenatorModal" tabindex="-1" role="dialog" aria-labelledby="viewSenatorModalLabel" aria-hidden="true">
                     <div style="padding-right:1400px; "class="modal-dialog" role="document">
@@ -328,25 +332,27 @@ footer {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <table class="box">
-                                <tr class="row"> <b>
-                                    <th ></th> <!-- Tanggalin -->
-                                    <th >Name</th>
-                                    <th >Party List</th>
-                                    <th >Laws Passed</th>
-                                    <th >Recognitions</th>
-                                    <th >Educational Background</th>
-                                </b> </tr>
-                                <ul *ngFor="let senator of senators" class="col-md-6 col-xl-3">
-                                <tr class="row">
-                                    <td ><img style="border-radius: 20%; height: auto; width: 150px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
-                                    <td >{{senator.name}}</td>
-                                    <td >{{senator.partyList}}</td>
-                                    <td >{{senator.lawsPassed}}</td>
-                                    <td >{{senator.knownFor}}</td>
-                                    <td >{{senator.background}}</td>
-                                    <a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
-                                    <a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                            <table >
+                                <tr style=""> 
+                                    
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><img src="https://i.ibb.co/C7GmRZW/zxc.png"/></th> <!-- Tanggalin -->
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Name</b> </th>
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Party List</b></th>
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Laws Passed</b></th>
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Recognitions</b></th>
+                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Educational Background</b></th>
+                                    
+                                </tr>
+                                <ul *ngFor="let senator of senators" >
+                                <tr >
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><img style="border-radius: 10%; height: auto; width: 100px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.name}}</td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.partyList}}</td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.lawsPassed}}</td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.knownFor}}</td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.background}}</td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a></td>
+                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a></td>
                                 </tr>      
                                 </ul>
                         </table>
