@@ -101,9 +101,9 @@ footer {
 }
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav style="height:70px;"class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div><img src="https://i.ibb.co/kMQn6Jt/COMELEC.png" width="30" height="30"></div>
-    <a class="navbar-brand" style="color:white;">&nbsp;&nbsp;&nbsp;Presidential Candidate List</a>
+    <a class="navbar-brand" style="color:white; font-family: Raleway, sans-serif;">&nbsp;&nbsp;&nbsp;Presidential Candidate List</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
@@ -141,7 +141,7 @@ footer {
                     </div>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><i class=""></i><b>Laws Passed:</b> {{president?.lawsPassed}}</li>
+                    <li class="list-group-item"><i class=""></i><b>Laws Passed:</b> <i> {{president?.lawsPassed}} </i></li>
                     <li class="list-group-item"><i class=""></i><b>Educational Background:</b> &nbsp; <br>{{president?.education}}<br></li>
                     <li class="list-group-item"><i class=""></i><b>Achievements / Recognitions</b> &nbsp; <br>{{president?.knownFor}}</li>
                 </ul>
