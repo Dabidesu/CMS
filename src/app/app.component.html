@@ -16,13 +16,22 @@
   cursor: pointer;
 }
 
-.button:hover {opacity: 1; border-radius: 100px; border: 2px solid rgb(204, 184, 0)}
-
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #DEDEDE;
+.buttonxd {
+  background-color: #ffae00;
+  border: none;
+  color: #550a8a;
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
 }
+
+.button:hover {opacity: 1; border-radius: 100px; border: 2px solid rgb(204, 184, 0)}
+.buttonxd:hover {opacity: 1; border-radius: 50px; border: 2px solid rgb(204, 184, 0)}
 
 table {
   border-collapse: collapse;
@@ -37,23 +46,85 @@ th, td {
 tr:nth-child(even) {
   background-color: #D6EEEE;
 }
+
+.marq {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-family: sans-serif;
+            font-weight: bold;
+            background-color: rgba(100, 100, 100, 0.5);
+            color: #565656;
+            direction: right;
+}
+
+.icon-bar {
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.icon-bar a {
+  display: block;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 20px;
+}
+
+.icon-bar a:hover {
+  background-color: rgb(56, 56, 56);
+}
+
+.mainsite {
+  background: #324a7e;
+  color: white;
+}
+
+.facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 5px;
+  background-color: #565656;
+  color: white;
+}
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" style="color:white;">Presidential Candidate List</a>
+    <div><img src="https://i.ibb.co/kMQn6Jt/COMELEC.png" width="30" height="30"></div>
+    <a class="navbar-brand" style="color:white;">&nbsp;&nbsp;&nbsp;Presidential Candidate List</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor02" style = "position: absolute; float: right; right: 150px;">
         <!-- Search Module -->
+        <div><img src="https://i.ibb.co/q01BRmh/1024px-Search-Icon-svg.png" width="30" height="30"></div>&nbsp;&nbsp;
        <form class="form-inline my-2 my-lg-0">
           <input type="search" (ngModelChange)="searchPresidents(key.value)" #key="ngModel" ngModel
-           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search candidates..." required>
+           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search Candidates..." required>
        </form>
     </div>
   </nav>
-
-<body>
+<marquee class="marq" width="100%" direction="right">
+    Philippine Presidential Election. May 9, 2022. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Voter registration ends on October 30, 2021. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Online Accomplishment of Forms for Voter Registration | <a href="https://irehistro.comelec.gov.ph/cef1" target="_blank">Link</a>
+</marquee>
+<div class="icon-bar">
+    <a href="https://comelec.gov.ph/" target="_blank" class="mainsite"><img src="https://i.ibb.co/kMQn6Jt/COMELEC.png"  width="20" height="20"/></a> 
+    <a href="https://www.facebook.com/comelec.ph" target="_blank" class="facebook"><i class="fa fa-facebook"></i></a> 
+    <a href="https://twitter.com/COMELEC" target="_blank" class="twitter"><i class="fa fa-twitter"></i></a> 
+</div>
+<br> <br>
 <!-- Presidential Candidate Cards-->
 <br><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container" id="main-container" >
@@ -83,6 +154,7 @@ tr:nth-child(even) {
                     
                     <ul class="social-links list-inline mb-0">
                         <button class="button" (click)="onOpenModalXD(null!, 'view')" ><b>Senatorial Slate</b></button>
+                        <button class="buttonxd" (click)="onOpenModalXD(null!, 'addSen')" ><b>+</b></button>
                     </ul>
                 </div>
             </div>
@@ -96,7 +168,7 @@ tr:nth-child(even) {
                 </div>
             </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item" style="background-color: #999999; border: none !important;"><div style="text-align: center;"><a class="nav-link" (click)="onOpenModal(null!, 'add')"><img src="https://i.ibb.co/nQKJvyK/output-onlinepngtools-2.png" width="50" height="50"/></a></div> </li>
+                <li class="list-group-item" style="background-color: #999999; border: none !important;"><div style="text-align: center;"><a class="nav-link" (click)="onOpenModal(null!, 'add')"><img src="https://i.ibb.co/mqpcz8m/output-onlinepngtools-2.png" width="50" height="50"/></a></div> </li>
             
             </ul>
             
@@ -122,34 +194,34 @@ tr:nth-child(even) {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form #addForm="ngForm" (ngSubmit)="onAddPresident(addForm)">
+                            <form #addFormx="ngForm" (ngSubmit)="onAddPresident(addFormx)">
                             <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                                <label for="name">Name</label>
+                                <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
                             </div>
                             <div class="form-group">
-                            <label for="partyList">Party List</label>
-                            <input type="email" ngModel name="partyList" class="form-control" id="partyList" placeholder="Party List" required>
+                                <label for="partyList">Party List</label>
+                                <input type="email" ngModel name="partyList" class="form-control" id="partyList" placeholder="Party List" required>
                             </div>
                             <div class="form-group">
-                            <label for="lawsPassed">Laws Passed</label>
-                            <input type="text" ngModel name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed" required>
+                                <label for="lawsPassed">Laws Passed</label>
+                                <input type="text" ngModel name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed" required>
                             </div>
                             <div class="form-group">
-                            <label for="knownFor">Recognitions</label>
-                            <input type="text" ngModel name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions" required>
+                                <label for="knownFor">Recognitions</label>
+                                <input type="text" ngModel name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions" required>
                             </div>
                             <div class="form-group">
                                 <label for="education">Educational Background</label>
                                 <input type="text" ngModel name="education" class="form-control" id="education" placeholder="Educational Background" required>
                             </div>
                             <div class="form-group">
-                            <label for="imageUrl">Image URL</label>
-                            <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                                <label for="imageUrl">Image URL</label>
+                                <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
                             </div>
                             <div class="modal-footer">
-                            <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
+                                <button type="button" id="add-president-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button [disabled]="addFormx.invalid" type="submit" class="btn btn-primary" >Submit</button>
                             </div>
                             </form>
                         </div>
@@ -224,11 +296,12 @@ tr:nth-child(even) {
                         </div>
                     </div>
                 </div>
-        
+                
+                <!-- Copy below -->
                 <!-- View Senatorial Candidates -->
                 <div class="modal fade" id="viewSenatorModal" tabindex="-1" role="dialog" aria-labelledby="viewSenatorModalLabel" aria-hidden="true">
-                    <div  class="modal-dialog" role="document">
-                    <div class="modal-content ">
+                    <div style="padding-right:1400px; "class="modal-dialog" role="document">
+                    <div style="width: 1400px;" class="modal-content ">
                         <div class="modal-header">
                             <h5 id="addSenatorModalLabel" style="text-align: center;">List of Senatorial Candidates <!--for {{president.name}} --> </h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -236,29 +309,158 @@ tr:nth-child(even) {
                             </button>
                         </div>
                         <div class="modal-body">
-                            <table>
-                                <tr> <b>
-                                    <th>img</th> <!-- Tanggalin -->
-                                    <th>Name</th>
-                                    <th>Party List</th>
-                                    <th>Laws Passed</th>
-                                    <th>Recognitions</th>
-                                    <th>Educational Background</th>
+                            <table class="box">
+                                <tr class="row"> <b>
+                                    <th ></th> <!-- Tanggalin -->
+                                    <th >Name</th>
+                                    <th >Party List</th>
+                                    <th >Laws Passed</th>
+                                    <th >Recognitions</th>
+                                    <th >Educational Background</th>
                                 </b> </tr>
-                            <ul *ngFor="let senator of senators" class="col-md-6 col-xl-3">
-                                    <tr>
-                                        <td><img style="border-radius: 20%; height: auto; width: 150px; object-fit: cover;" src="{{senator.imageUrl}}" /></td>
-                                        <td>{{senator.name}}</td>
-                                        <td>{{senator.partyList}}</td>
-                                        <td>{{senator.lawsPassed}}</td>
-                                        <td>{{senator.knownFor}}</td>
-                                        <td>{{senator.background}}</td>
-                                    </tr>      
-                            </ul>
-                        </table> 
+                                <ul *ngFor="let senator of senators" class="col-md-6 col-xl-3">
+                                <tr class="row">
+                                    <td ><img style="border-radius: 20%; height: auto; width: 150px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
+                                    <td >{{senator.name}}</td>
+                                    <td >{{senator.partyList}}</td>
+                                    <td >{{senator.lawsPassed}}</td>
+                                    <td >{{senator.knownFor}}</td>
+                                    <td >{{senator.background}}</td>
+                                    <a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a>
+                                    <a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a>
+                                </tr>      
+                                </ul>
+                        </table>
+                    
                         </div>
                     </div>
                     </div>
                 </div>
-</body>
+
+                <!-- Add (Senator) -->
+                <div class="modal fade" id="addSenatorModal" tabindex="-1" role="dialog" aria-labelledby="addSenatorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addSenatorModalLabel">Add Senatorial Candidate</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #addForm="ngForm" (ngSubmit)="onAddSenator(addForm)">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" ngModel name="name" class="form-control" id="name" placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="partyList">Party List</label>
+                                <input type="email" ngModel name="partyList" class="form-control" id="partyList" placeholder="Party List" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lawsPassed">Laws Passed</label>
+                                <input type="text" ngModel name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="knownFor">Recognitions</label>
+                                <input type="text" ngModel name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="background">Educational Background</label>
+                                <input type="text" ngModel name="background" class="form-control" id="background" placeholder="Educational Background" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="president">Presidential Aspirant</label>
+                                <input type="text" ngModel name="president" class="form-control" id="president" placeholder="Presidential Aspirant" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="imageUrl">Image URL</label>
+                                <input type="text" ngModel name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="add-senator-form" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary" >Submit</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Edit (Senator) -->
+                <div class="modal fade" id="updateSenatorModal" tabindex="-1" role="dialog" aria-labelledby="updateSenatorModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updateSenatorModalLabel">Update Record</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form #editFormx="ngForm">
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" ngModel="{{editSenator?.name}}" name="name" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Name">
+                                </div>
+                                <input type="hidden" ngModel="{{editSenator?.id}}" name="id" class="form-control" id="id" placeholder="Senator ID">
+                                <div class="form-group">
+                                    <label for="partyList">Party List</label>
+                                    <input type="text" ngModel="{{editSenator?.partyList}}" name="partyList" class="form-control" id="partyList" placeholder="Party List">
+                                </div>
+                                <div class="form-group">
+                                    <label for="lawsPassed">Laws Passed</label>
+                                    <input type="text" ngModel="{{editSenator?.lawsPassed}}" name="lawsPassed" class="form-control" id="lawsPassed" placeholder="Laws Passed">
+                                </div>
+                                <div class="form-group">
+                                    <label for="knownFor">Recognitions</label>
+                                    <input type="text" ngModel="{{editSenator?.knownFor}}" name="knownFor" class="form-control" id="knownFor" placeholder="Recognitions">
+                                </div>
+                                <div class="form-group">
+                                    <label for="background">Educational Background</label>
+                                    <input type="text" ngModel="{{editSenator?.background}}" name="background" class="form-control" id="background" placeholder="Educational Background">
+                                </div>
+                                <div class="form-group">
+                                    <label for="president">Presidential Aspirant</label>
+                                    <input type="text" ngModel="{{editSenator?.president}}" name="president" class="form-control" id="president" placeholder="Presidential Aspirant">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Image URL</label>
+                                    <input type="text" ngModel="{{editSenator?.imageUrl}}" name="imageUrl" class="form-control" id="imageUrl" placeholder="Image URL">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="" data-dismiss="modal" class="btn btn-secondary">Close</button>
+                                    <button (click)="onUpdateSenator(editFormx.value)" data-dismiss="modal" class="btn btn-primary" >Save changes</button>
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete (Senator)  -->
+                <div class="modal fade" id="deleteSenatorModal" tabindex="-1" role="dialog" aria-labelledby="deleteModelLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModelLabel">Delete Candidate</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to remove candidate <b>{{deleteSenator?.name}}</b>?</p>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                                    <button (click)="onDeleteSenator(deleteSenator?.id!)" class="btn btn-danger" data-dismiss="modal">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+<!-- Footer -->
+<footer>
+    Copyright © 2021. Carlos-Dela Rosa-Ebora-Garin-Rivera. All Rights Reserved.
+</footer>
 

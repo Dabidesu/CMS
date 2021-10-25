@@ -17,7 +17,7 @@ public class Senator implements Serializable {
         private String knownFor;
         private String background;
         private String imageUrl;
-
+        private String president;
         public Senator() {}
 
         public Senator(String name, String partyList, String lawsPassed, String knownFor, String background, String imageUrl){
@@ -27,7 +27,7 @@ public class Senator implements Serializable {
             this.knownFor = knownFor;
             this.background = background;
             this.imageUrl = imageUrl;
-
+            this.president = president;
         }
 
         public Long getId() {
@@ -84,6 +84,14 @@ public class Senator implements Serializable {
             this.imageUrl = imageUrl;
         }
 
+        public String getPresident() {
+          return president;
+        }
+
+        public void setPresident(String president) {
+          this.president = president;
+        }
+
         @Override
         public String toString(){
             return "Senator{" +
@@ -94,6 +102,7 @@ public class Senator implements Serializable {
                     ", knownFor= '" + knownFor + '\'' +
                     ", background= '" + background + '\'' +
                     ", imageUrl= '" + imageUrl + '\'' +
+                    ", president = '" + president + '\'' +
                     '}';
         }
 }

@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   public deletePresident: President;
 
   public senators: Senator[];
-  /*public editSenator: Senator;*/
+  public editSenator: Senator;
   public deleteSenator: Senator;
 
   title: any;
@@ -64,6 +64,9 @@ export class AppComponent implements OnInit {
     );
   }
 
+
+
+  //------------------------ President ------------------------//
   public onAddPresident(addForm: NgForm): void {
     document.getElementById('add-president-form')?.click();
     this.presidentService.addPresident(addForm.value).subscribe(
@@ -125,26 +128,6 @@ export class AppComponent implements OnInit {
     button.click();
   }
 
-  public onOpenModalXD(senator: Senator, mode: string): void {
-    const containerxd = document.getElementById('main-container');
-    const buttonxd = document.createElement('button');
-    buttonxd.type = 'button';
-    buttonxd.style.display = 'none';
-    buttonxd.setAttribute('data-toggle', 'modal');
-    if (mode == 'view')
-    {
-      buttonxd.setAttribute('data-target', '#viewSenatorModal');
-    }
-    if (mode == 'delete')
-    {
-      this.deleteSenator = senator;
-      buttonxd.setAttribute('data-target', '#deletePresidentModal');
-    }
-    containerxd?.appendChild(buttonxd);
-    buttonxd.click();
-  }
-  
-   
   public searchPresidents(key: string): void {
     console.log(key);
     const results: President[] = [];
@@ -162,6 +145,77 @@ export class AppComponent implements OnInit {
       this.getPresidents();
     }
   }
+
+
+
+  //------------------------ Senator ------------------------//
+  public onAddSenator(addForm: NgForm): void {
+    document.getElementById('add-senator-form')?.click();
+    this.senatorService.addSenator(addForm.value).subscribe(
+      (response: Senator) => {
+        console.log(response);
+        this.getSenators();
+      }, 
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onUpdateSenator(senator: Senator): void {
+    this.senatorService.updateSenator(senator).subscribe(
+      (response: Senator) => {
+        console.log(response);
+        this.getSenators();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+  
+  public onDeleteSenator(senatorId: number): void {
+    this.senatorService.deleteSenator(senatorId).subscribe(
+      (response: void) => {
+        console.log(response);
+        this.getSenators();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModalXD(senator: Senator, mode: string): void {
+    const containerxd = document.getElementById('main-container');
+    const buttonxd = document.createElement('button');
+    buttonxd.type = 'button';
+    buttonxd.style.display = 'none';
+    buttonxd.setAttribute('data-toggle', 'modal');
+    if (mode == 'addSen')
+    {
+      buttonxd.setAttribute('data-target', '#addSenatorModal');
+    }
+    if (mode == 'editSen')
+    {
+      this.editSenator = senator;
+      buttonxd.setAttribute('data-target', '#updateSenatorModal');
+    }
+    if (mode == 'deleteSen')
+    {
+      this.deleteSenator = senator;
+      buttonxd.setAttribute('data-target', '#deleteSenatorModal');
+    }
+    if (mode == 'view')
+    {
+      buttonxd.setAttribute('data-target', '#viewSenatorModal');
+    }
+    containerxd?.appendChild(buttonxd);
+    buttonxd.click();
+  }
+  
+   
+  
 
 
 

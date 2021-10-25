@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,8 +27,14 @@ public class SenatorService {
     public Senator updateSenator(Senator senator) {
         return senatorRepo.save(senator);
     }
-
     public void deleteSenator(Long id){
-        senatorRepo.deleteSenatorById(id);
+    senatorRepo.deleteSenatorById(id);
+  }
+    public List<Senator> findByPresident(String president) {
+      List<Senator> senators = new ArrayList<>();
+      senatorRepo.findByPresident(president).forEach(senators:: add);
+      return senators;
     }
+
+
 }

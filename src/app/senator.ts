@@ -6,5 +6,5 @@ export interface Senator {
     knownFor: string;
     background: string;
     imageUrl: string;
-
+    president: string;
 }
