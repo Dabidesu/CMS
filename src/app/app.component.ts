@@ -186,6 +186,24 @@ export class AppComponent implements OnInit {
     );
   }
 
+  public searchSenators(key: string): void {
+    console.log(key);
+    const results: Senator[] = [];
+    for (const senator of this.senators) {
+      if (senator.name.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || senator.partyList.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || senator.lawsPassed.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || senator.knownFor.toLowerCase().indexOf(key.toLowerCase()) !== -1
+      || senator.background.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
+        results.push(senator);
+      }
+    }
+    this.senators = results;
+    if (results.length === 0 || !key) {
+      this.getSenators();
+    }
+  }
+  
   public onOpenModalXD(senator: Senator, mode: string): void {
     const containerxd = document.getElementById('main-container');
     const buttonxd = document.createElement('button');
@@ -214,7 +232,7 @@ export class AppComponent implements OnInit {
     buttonxd.click();
   }
   
-   
+  
   
 
 
