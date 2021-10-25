@@ -33,24 +33,12 @@
 .button:hover {opacity: 1; border-radius: 100px; border: 2px solid rgb(204, 184, 0)}
 .buttonxd:hover {opacity: 1; border-radius: 50px; border: 2px solid rgb(204, 184, 0)}
 
-table {
+table, th, td {
+  border: 1px solid black;
   border-collapse: collapse;
-  width: 100%;
 }
 
 
-
-
-
-th, td {
-  text-align: left;
-  padding: 50px;
-  border: 1px solid #dddddd;
-}
-
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
 
 .marq {
             padding-top: 10px;
@@ -320,7 +308,7 @@ footer {
                 <!-- View Senatorial Candidates -->
                 <div class="modal fade" id="viewSenatorModal" tabindex="-1" role="dialog" aria-labelledby="viewSenatorModalLabel" aria-hidden="true">
                     <div style="padding-right:1400px; "class="modal-dialog" role="document">
-                    <div style="width: 1400px;" class="modal-content ">
+                    <div style="width: 1400px;" class="modal-content">
                         <div class="modal-header">
                             <h5 id="addSenatorModalLabel" style="text-align: center;">List of Senatorial Candidates <!--for {{president.name}} --> </h5>
                             <form style="margin-left: 800px; "class="form-inline my-2 my-lg-0">
@@ -333,30 +321,30 @@ footer {
                         </div>
                         <div class="modal-body">
                             <table >
-                                <tr style=""> 
-                                    
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><img src="https://i.ibb.co/C7GmRZW/zxc.png"/></th> <!-- Tanggalin -->
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Name</b> </th>
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Party List</b></th>
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Laws Passed</b></th>
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Recognitions</b></th>
-                                        <th style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><b>Educational Background</b></th>
-                                    
+                                <tr > 
+                                    <th class="col-sm-4"><img src="https://i.ibb.co/C7GmRZW/zxc.png"/></th> <!-- Tanggalin -->
+                                    <th class="col-sm-4"><b>Name</b> </th>
+                                    <th class="col-sm-4"><b>Party List</b></th>
+                                    <th class="col-sm-4"><b>Laws Passed</b></th>
+                                    <th class="col-sm-4"><b>Recognitions</b></th>
+                                    <th class="col-sm-4"><b>Educational Background</b></th>
                                 </tr>
-                                <ul *ngFor="let senator of senators" >
                                 <tr >
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><img style="border-radius: 10%; height: auto; width: 100px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.name}}</td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.partyList}}</td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.lawsPassed}}</td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.knownFor}}</td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;">{{senator.background}}</td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a></td>
-                                    <td style="width: 320px; padding: 10px; border: 5px solid gray; margin: 0;"><a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a></td>
+                                    <ul *ngFor="let senator of senators" >
+                                        <td class="col-sm-4"><img style="border-radius: 10%; height: auto; width: 100px; object-fit: cover; " src="{{senator.imageUrl}}" /></td>
+                                        <td class="col-sm-4">{{senator.name}}</td>
+                                        <td class="col-sm-4">{{senator.partyList}}</td>
+                                        <td class="col-sm-4">{{senator.lawsPassed}}</td>
+                                        <td class="col-sm-4">{{senator.knownFor}}</td>
+                                        <td class="col-sm-4">{{senator.background}}</td>
+                                        <td class="col-sm-4"><a (click)="onOpenModalXD(senator, 'editSen')"class="btn btn-primary tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-pencil"></i> </a></td>
+                                        <td class="col-sm-4"><a (click)="onOpenModalXD(senator, 'deleteSen')"class="btn btn-secondary tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-times"></i></a></td>
+                                    </ul>
                                 </tr>      
-                                </ul>
+                                
                         </table>
-                    
+                        
+
                         </div>
                     </div>
                     </div>
@@ -444,10 +432,6 @@ footer {
                                 <div class="form-group">
                                     <label for="background">Educational Background</label>
                                     <input type="text" ngModel="{{editSenator?.background}}" name="background" class="form-control" id="background" placeholder="Educational Background">
-                                </div>
-                                <div class="form-group">
-                                    <label for="president">Presidential Aspirant</label>
-                                    <input type="text" ngModel="{{editSenator?.president}}" name="president" class="form-control" id="president" placeholder="Presidential Aspirant">
                                 </div>
                                 <div class="form-group">
                                     <label for="phone">Image URL</label>
