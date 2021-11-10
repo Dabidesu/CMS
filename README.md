@@ -1,4 +1,4 @@
 # CMS
  
-Angular (Frontend)
+- Angular (Frontend)
 - Springboot (Backend)
